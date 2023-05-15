@@ -1,30 +1,21 @@
 import type {
   IDataObject,
   IExecuteFunctions,
-  ILoadOptionsFunctions,
   INodeExecutionData,
-  INodeParameters,
-  INodePropertyOptions,
   INodeType,
   INodeTypeDescription,
-  JsonObject,
 } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
 
-import { URL } from 'url';
+import { awsApiRequestREST } from '../GenericFunctions';
 
-import { awsApiRequestSOAP } from '../GenericFunctions';
-
-import { pascalCase } from 'change-case';
-
-export class AwsSqs implements INodeType {
+export class AwsCe implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'AWS CE',
     name: 'awsCe',
     icon: 'file:ce.svg',
     group: ['output'],
     version: 1,
-    subtitle: '={{$parameter["operation"]}}',
+    subtitle: '={{$parameter["metrics"]}}',
     description: 'Retrieves cost and usage information from AWS',
     defaults: {
       name: 'AWS CE',
@@ -61,7 +52,7 @@ export class AwsSqs implements INodeType {
         noDataExpression: true,
         options: [
           {
-            name: 'DAILY,
+            name: 'DAILY',
             value: 'DAILY',
             description: 'Break down costs and usage by day.',
           },
@@ -75,7 +66,7 @@ export class AwsSqs implements INodeType {
             value: 'HOURLY',
             description: 'Break down costs and usage by hour.',
           }
-        ]
+        ],
         default: 'MONTHLY',
       },
       {
@@ -93,27 +84,27 @@ export class AwsSqs implements INodeType {
     const items = this.getInputData();
     const returnData: IDataObject[] = [];
     let responseData;
-    const resource = this.getNodeParameter('resource', 0);
-    const operation = this.getNodeParameter('operation', 0);
+
+    // Get parameters.
+    const timeStart = this.getNodeParameter('timeStart', 0) as string;
+    const timeEnd = this.getNodeParameter('timeEnd', 0) as string;
+    const granularity = this.getNodeParameter('granularity', 0) as string;
+    const metrics = this.getNodeParameter('metrics', 0) as string;
+
+    const action = 'AWSInsightsIndexService.GetCostAndUsage';
+
+    // Create request body.
+    const body: IDataObject = {
+      TimePeriod : {
+        Start: timeStart,
+        End: timeEnd,
+      },
+      Granularity: granularity,
+      Metrics : [ metrics ],
+    };
+
     for (let i = 0; i < items.length; i++) {
       try {
-        // Get parameters.
-        const timeStart = this.getNodeParameter('timeStart', i) as string;
-        const timeStart = this.getNodeParameter('timeEnd', i) as string;
-        const granularity = this.getNodeParameter('granularity', i) as string;
-        const metrics = this.getNodeParameter('metrics', i) as string;
-
-        // Create request body.
-        const body: IDataObject = {
-          TimePeriod : {
-            Start: timeStart,
-            End: timeEnd,
-          },
-          Granularity: granularity,
-          Metrics : [ metrics ],
-        };
-
-        const action = 'AWSInsightsIndexService.GetCostAndUsage';
         responseData = await awsApiRequestREST.call(
           this,
           'ce',
