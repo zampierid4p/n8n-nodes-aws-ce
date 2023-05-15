@@ -1,19 +1,19 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-nodes-aws-ce",
   "version": "0.1.0",
-  "description": "",
+  "description": "n8n node to fetch AWS Cost and Usage data.",
   "keywords": [
     "n8n-community-node-package"
   ],
   "license": "MIT",
   "homepage": "",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Peter Lieverdink",
+    "email": "lieverdink@reliefweb.int"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/UN-OCHA/n8n-nodes-aws-ce.git"
   },
   "main": "index.js",
   "scripts": {
@@ -29,13 +29,8 @@
   ],
   "n8n": {
     "n8nNodesApiVersion": 1,
-    "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
-    ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/CE/AwsCe.node.js"
     ]
   },
   "devDependencies": {
