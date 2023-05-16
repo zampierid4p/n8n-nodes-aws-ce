@@ -1,6 +1,6 @@
 {
-  "name": "n8n-nodes-aws-ce",
-  "version": "0.1.0",
+  "name": "@unocha/n8n-nodes-aws-ce",
+  "version": "0.0.1",
   "description": "n8n node to fetch AWS Cost and Usage data.",
   "keywords": [
     "n8n-community-node-package",
@@ -10,10 +10,7 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/UN-OCHA/n8n-nodes-aws-ce",
-  "author": {
-    "name": "Peter Lieverdink",
-    "email": "lieverdink@reliefweb.int"
-  },
+  "author": "Peter Lieverdink <lieverdink@reliefweb.int>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/UN-OCHA/n8n-nodes-aws-ce.git"
@@ -48,6 +45,9 @@
     "n8n-workflow": "*",
     "prettier": "^2.7.1",
     "typescript": "~4.8.4"
+  },
+  "bugs": {
+    "url": "https://github.com/UN-OCHA/n8n-nodes-aws-ce/issues"
   },
   "dependencies": {
   }
