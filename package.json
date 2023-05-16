@@ -10,7 +10,10 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/UN-OCHA/n8n-nodes-aws-ce",
-  "author": "Peter Lieverdink <lieverdink@reliefweb.int>",
+  "author": {
+    "name": "Peter Lieverdink",
+    "email":  "lieverdink@reliefweb.int"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/UN-OCHA/n8n-nodes-aws-ce.git"

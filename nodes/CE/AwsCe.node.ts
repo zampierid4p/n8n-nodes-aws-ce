@@ -39,20 +39,20 @@ export class AwsCe implements INodeType {
 				noDataExpression: true,
 				options: [
 					{
-						name: 'Get cost and usage',
+						name: 'Get Cost and Usage',
 						value: 'getCostAndUsage',
-						action: 'Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric that you want the request to return.',
+						action: 'Retrieves cost and usage metrics for your account you can specify which cost and usage related metric that you want the request to return',
 					},
 					{
-						name: 'Get cost forecast',
+						name: 'Get Cost Forecast',
 						value: 'getCostForecast',
-						action: 'Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs.',
+						action: 'Retrieves a forecast for how much amazon web services predicts that you will spend over the forecast time period that you select based on your past costs',
 					},
 				],
 				default: 'getCostAndUsage',
 			},
       {
-        displayName: 'Time start',
+        displayName: 'Time Start',
         name: 'timeStart',
         type: 'string',
         required: true,
@@ -60,7 +60,7 @@ export class AwsCe implements INodeType {
         description: 'The start date for retrieving Amazon Web Services costs. Data for this date is included.',
       },
       {
-        displayName: 'Time end',
+        displayName: 'Time End',
         name: 'timeEnd',
         type: 'string',
         required: true,
@@ -76,23 +76,23 @@ export class AwsCe implements INodeType {
           {
             name: 'DAILY',
             value: 'DAILY',
-            description: 'Break down costs and usage by day.',
+            description: 'Break down costs and usage by day',
           },
           {
             name: 'MONTHLY',
             value: 'MONTHLY',
-            description: 'Break down costs and usage by month.',
+            description: 'Break down costs and usage by month',
           },
           {
             name: 'HOURLY',
             value: 'HOURLY',
-            description: 'Break down costs and usage by hour.',
+            description: 'Break down costs and usage by hour',
           }
         ],
         default: 'MONTHLY',
       },
       {
-        displayName: ' Metrics',
+        displayName: 'Metrics',
         name: 'metrics',
         placeholder: 'Add Metric',
         type: 'fixedCollection',
@@ -101,7 +101,7 @@ export class AwsCe implements INodeType {
 				},
         required: true,
         default: {},
-        description: 'The metrics to include in the output.',
+        description: 'The metrics to include in the output',
         options: [
 				{
 						name: "metrics",
