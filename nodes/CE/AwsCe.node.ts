@@ -13,7 +13,7 @@ import * as AWS from 'aws-sdk';
 
 export class AwsCe implements INodeType {
   description: INodeTypeDescription = {
-    displayName: 'AWS CE',
+    displayName: 'AWS Cost Explorer',
     name: 'awsCe',
     icon: 'file:ce.svg',
     group: ['output'],
@@ -21,7 +21,7 @@ export class AwsCe implements INodeType {
     subtitle: '={{$parameter["operation"]}}',
     description: 'Retrieves cost and usage information from AWS',
     defaults: {
-      name: 'AWS CE',
+      name: 'AWS Cost Explorer',
     },
     inputs: ['main'],
     outputs: ['main'],
@@ -69,7 +69,7 @@ export class AwsCe implements INodeType {
       },
       {
         displayName: 'Granularity',
-        name: 'granulatiry',
+        name: 'granularity',
         type: 'options',
         noDataExpression: true,
         options: [
